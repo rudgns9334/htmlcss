@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>document</title>
+
+        <style>
+            #container{
+                width: 600px;
+                height: 500px;
+                border: 1px solid purple;
+                position: relative;
+            }
+            #wrapper{
+                width: 400px;
+                height: 300px;
+                border: 1px solid dodgerblue;
+                /* position: relative; */
+                /* 원래 내가 있어야 했던 위치에서 설정한 값만큼 이동 */
+                top: 30px;
+                left: 30px;
+            }
+            .item{
+                width: 100px;
+                height: 100px;
+                background-color: bisque;
+                /* position: absolute; */
+                /* 부모의 기준에서 해당 설정 값 만큼 이동 */
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+       <div id="container">
+            <div id="wrapper">
+                <div class="item">
+                    1
+                </div>
+                <div class="item">
+                    2
+                </div>
+                <div class="item">
+                    3
+                </div>
+                <div class="item">
+                    4
+                </div>
+            </div>
+       </div>
+    </body>
+    
+</html>
