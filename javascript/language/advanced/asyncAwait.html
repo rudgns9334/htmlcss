@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Await
+        let data = [ 1, 2, 3 ];
+
+        // Promise 기반의 function
+        function getData(){
+            
+            return new Promise( ( resolve, reject ) => {
+                // 비동기 작업 성공 : resolve
+                // 실패 reject
+                // 비동기 작업 수행
+                setTimeout( () => {
+                data.push(4);
+                data.push(5);
+                console.log("done!");
+                // 성공 ? 실패 ?
+                const error = true;
+
+                if( !error ) resolve();
+                else reject('Error!!!!');
+            } , 1000 );
+            });
+        }
+
+        function printData(){
+            data.forEach( el => console.log( el ));
+        }
+
+        doIt();
+
+        async function doIt(){ // await를 사용하기위해 해당 함수를 async해줄 필요가 있따.
+            try{ // 만약 reject 함수를 다루고 싶을 때
+                await getData(); // Promise 기반 비동기 function일 때 await를 만나면 해당 작업이 끝날때까지 기다리게 된다.
+                printData(); //
+            } catch ( e ) {
+                console.log(e);
+            }
+             
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let data = [ 1, 2, 3 ];
+
+        // 일반적인 비동기 방식
+        // function getData(){
+        //     // 비동기 작업 수행
+        //     setTimeout( () => {
+        //         data.push(4);
+        //         data.push(5);
+        //         console.log("done!");
+        //     } , 1000 );
+            
+        // }
+
+        // function printData(){
+        //     data.forEach( el => console.log( el ));
+        // }
+
+        // getData();
+        // printData();
+
+        // callback 처리
+        // callback이 많아질수록 가독성이 떨어지고 복잡한 코드가 된다는 문제가 발생
+        function getData( callback ){
+            // 비동기 작업 수행
+            setTimeout( () => {
+                data.push(4);
+                data.push(5);
+                console.log("done!");
+                callback();
+            } , 1000 );
+            
+        }
+
+        function printData(){
+            data.forEach( el => console.log( el ));
+        }
+
+        getData(printData);
+    </script>
+</body>
+</html>
