@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>마커 생성하기</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="map" style="width: 100%; height: 1000px"></div>
+
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3cf19be9d1a0407bc3f172f37d2b217e"
+    ></script>
+    <script>
+      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+        mapOption = {
+          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+          level: 3, // 지도의 확대 레벨
+        };
+
+      var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+      const places = [
+        { name: "부산시 남구", lat: 35.1365226602861, lng: 129.084238267311 },
+        { name: "부산시 해운대구", lat: 35.1630666685425, lng: 129.16359608401 },
+        { name: "부산시 강서구", lat: 35.2121944923157, lng: 128.980561688903 },
+      ];
+
+      // 세 개의 마커를 화면 중심에 어떻게 표시 ??
+      // => LatLngBounds 객체
+
+      var bounds = new kakao.maps.LatLngBounds();
+
+      // places 만큼 마커 생성 / 표시
+      places.forEach( (el) => {
+        // 마커가 표시될 위치입니다
+        var markerPosition = new kakao.maps.LatLng(el.lat, el.lng);
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+          map: map,
+          position: markerPosition,
+        });
+
+        var infowindow = new kakao.maps.InfoWindow({
+          content: `<div class="card" style="width: 18rem;">
+              <img src="data:image/png;base64,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" class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">${el.name}</h5>
+              <p class="card-text">lat : ${el.lat} lng : ${el.lng}</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>`,
+          removable: true,
+        });
+
+        kakao.maps.event.addListener(marker, "click", function () {
+          infowindow.open(map, marker);
+        });
+
+        // bounds
+        bounds.extends(markerPosition);
+      });
+
+      map.setBounds(bounds);
+    </script>
+  </body>
+</html>
