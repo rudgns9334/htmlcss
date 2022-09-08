@@ -272,15 +272,16 @@
         let monthSel = document.querySelector("#month");
         let month = monthSel[monthSel.selectedIndex].value;
         let dealYM = year + month;
+        console.log(dealYM);
         let queryParams =
-          encodeURIComponent("serviceKey") + "=" + "fA81LQ0JP7RJz7heqyRstQvT%2BIJhJS9y9ULusFNzLcaM1MVhDvMJtjVnuHukLyHW3aAMnCU8Z3M8jGXCkVu7tQ%3D%3D"; /*Service Key*/
+          encodeURIComponent("serviceKey") + "=" + "MJVBakchZVgFpyBJbFthn1KNws%2FWTwq4etww36fBEU3tM4GFxe4z7gqQPVUS6eqcd51m%2BzTQSSsR1jUMYfqnLA%3D%3D"; /*Service Key*/
         queryParams +=
           "&" +
           encodeURIComponent("LAWD_CD") +
           "=" +
           encodeURIComponent(regCode); /*아파트소재 구군*/
         queryParams +=
-          "&" + encodeURIComponent("DEAL_YMD") + "=" + encodeURIComponent(dealYM); /*조회년월*/
+          "&" + encodeURIComponent("DEAL_YMD") + "=" + encodeURIComponent("***"); /*조회년월*/
         queryParams +=
           "&" + encodeURIComponent("pageNo") + "=" + encodeURIComponent("1"); /*페이지번호*/
         queryParams +=
